@@ -29,8 +29,9 @@ public class HatchPanelSubsystem extends Subsystem {
   
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    /**
+     * this is a test to see if it works.
+     */
   }
 
   public void jawsOff(){
