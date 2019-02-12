@@ -8,6 +8,7 @@
 package org.usfirst.frc.team6843.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -32,6 +33,10 @@ public class HatchPanelSubsystem extends Subsystem {
     /**
      * this is a test to see if it works.
      */
+  }
+
+  public void updateDashboard(){
+    //insert smartdashboard stuffs here
   }
 
   public void jawsOff(){

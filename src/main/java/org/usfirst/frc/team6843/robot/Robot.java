@@ -112,6 +112,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotPeriodic() {
 		getDriveSubsystem().updateDashboard();
+		getHatchPanelSubsystem().updateDashboard();
+		getClimbingSubsystem().updateDashboard();
 	}
 
 	/**

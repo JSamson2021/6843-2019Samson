@@ -8,7 +8,7 @@
 package org.usfirst.frc.team6843.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -59,6 +59,18 @@ public class ClimbingSubsystem extends Subsystem {
     else {
       SpikeLimit.set(false);
     }
+  }
+
+  public void limitEngage(){
+    SpikeLimit.set(true);
+  }
+
+  public void limitDisengage(){
+    SpikeLimit.set(false);
+  }
+
+  public void updateDashboard(){
+    SmartDashboard.putBoolean("6in. Limit Engaged?", SpikeLimit.get());
   }
 
 }
