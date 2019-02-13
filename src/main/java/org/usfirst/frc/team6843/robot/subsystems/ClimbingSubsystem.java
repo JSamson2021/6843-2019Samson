@@ -9,6 +9,13 @@ package org.usfirst.frc.team6843.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team6843.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -20,10 +27,16 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 public class ClimbingSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private Compressor Compressor = new Compressor(0);
+  private Compressor Compressor = new Compressor(RobotMap.CLIMB_COMPRESSOR_1);
   private DoubleSolenoid FrontLegs = new DoubleSolenoid(1, 0);
   private DoubleSolenoid RearLegs = new DoubleSolenoid(2, 3);
   private Solenoid SpikeLimit = new Solenoid(4);
+  private final WPI_TalonSRX LowerDriveMotor = new WPI_TalonSRX(RobotMap.LOWER_DRIVE_MOTOR_1);
+
+  public ClimbingSubsystem(){
+    LowerDriveMotor.setNeutralMode(NeutralMode.Brake);
+    LowerDriveMotor.set(ControlMode.PercentOutput, 0.0);
+  }
 
   @Override
   public void initDefaultCommand() {
@@ -71,6 +84,10 @@ public class ClimbingSubsystem extends Subsystem {
 
   public void updateDashboard(){
     SmartDashboard.putBoolean("6in. Limit Engaged?", SpikeLimit.get());
+  }
+
+  public void drive(){
+    LowerDriveMotor.set(ControlMode.PercentOutput, 0.25);
   }
 
 }

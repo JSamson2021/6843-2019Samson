@@ -8,6 +8,9 @@
 package org.usfirst.frc.team6843.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team6843.robot.RobotMap;
+
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -20,19 +23,20 @@ public class HatchPanelSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private Compressor AlwaysOff = new Compressor(24);
+  private Compressor AlwaysOff = new Compressor(RobotMap.HATCH_COMPRESSOR_1);
   private DoubleSolenoid HatchJaws = new DoubleSolenoid(0,1);
+  
 
   public HatchPanelSubsystem(){
     //Turns off the compressor because we have no compressor on the compressor port of this PCM
     AlwaysOff.setClosedLoopControl(false);
+    
   }
   
   @Override
   public void initDefaultCommand() {
-    /**
-     * this is a test to see if it works.
-     */
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
   }
 
   public void updateDashboard(){
@@ -50,4 +54,6 @@ public class HatchPanelSubsystem extends Subsystem {
   public void closeJaws() {
     HatchJaws.set(Value.kReverse);
   }
+
+
 }
